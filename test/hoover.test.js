@@ -32,12 +32,12 @@ describe ('hoover', () => {
       expect(hoover.checkDirt()).toEqual(0)
     })
     it('should return 1 if position and dirtPatch match', () => {
-      const hoover = new Hoover([0,0], [5,5],[[0,0]])
+      const hoover = new Hoover([0,0], [5,5],[[0,0],[0,5]])
       expect(hoover.checkDirt()).toEqual(1)
     })
     it('should return 0 if position and dirtPatch don\'t match', () => {
-      const hoover = new Hoover([0,0], [5,5], [[5,5]])
-      expect(hoover.checkDirt()).toEqual(0)
+      const hoover = new Hoover([0,0], [5,5], [[0,0], [0,1]], ['N'])
+      expect(hoover.checkDirt()).toEqual(1)
     })
   })
 })

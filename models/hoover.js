@@ -2,10 +2,10 @@
 // create model & movement fns - space invaders.
 
 module.exports = class Hoover {
-  constructor(position, roomSize, dirtPatch) {
+  constructor(position, roomSize, dirtPatches) {
     this.position = position
     this.roomSize = roomSize
-    this.dirtPatch = dirtPatch
+    this.dirtPatches = dirtPatches
     this.trophies = 0
   }
 
@@ -30,7 +30,7 @@ module.exports = class Hoover {
         moveHoover= `Wrong way! Movement of ${direction} not recognised`;
         break;
     }
-    // check for dirtPatch
+    // check for dirtPatches
     this.checkDirt()
     return hooverMoves
   }
@@ -50,9 +50,9 @@ module.exports = class Hoover {
   }
 
   checkDirt() {
-    if (!this.dirtPatch) return this.trophies;
+    if (!this.dirtPatches) return this.trophies;
 
-    this.dirtPatch.forEach((patch, i) => {
+    this.dirtPatches.forEach((patch, i) => {
       if(patch[0] === this.position[0] && patch[1] === this.position[1]) {
         this.trophies += 1
         this.cleanUp(i)
@@ -61,7 +61,8 @@ module.exports = class Hoover {
     return this.trophies
   }
 
+  //splices the matching dirtPatch from dirtPatches array.
   cleanUp(dirtPatch) {
-    return dirtPatch
+    return this.dirtPatches.splice(dirtPatch, 1)
   }
 }

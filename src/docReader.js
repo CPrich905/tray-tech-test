@@ -13,7 +13,7 @@ module.exports = async function (input) {
   const readData = {
     position: [],
     roomSize: [],
-    dirtPatch: [],
+    dirtPatches: [],
     moves: []
   }
 
@@ -32,7 +32,7 @@ module.exports = async function (input) {
     } else if (line.includes('N', 'E', 'S', 'W')) {
       readData.moves = line.split('')
     } else {
-      readData.dirtPatch.push([parseInt(line[0]), parseInt(line[2])])
+      readData.dirtPatches.push([parseInt(line[0]), parseInt(line[2])])
     }
     index ++
     // console.log(`line from file: ${line}`)
