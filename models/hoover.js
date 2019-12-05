@@ -31,6 +31,7 @@ module.exports = class Hoover {
         break;
     }
     // check for dirtPatch
+    this.checkDirt()
     return hooverMoves
   }
   //check movement doesn't go beyond room dimensions. If not, +/- position on relative axis.
@@ -46,5 +47,21 @@ module.exports = class Hoover {
       this.position[axis] -= 1
     } 
     return this.position
+  }
+
+  checkDirt() {
+    if (!this.dirtPatch) return this.trophies;
+
+    this.dirtPatch.forEach((patch, i) => {
+      if(patch[0] === this.position[0] && patch[1] === this.position[1]) {
+        this.trophies += 1
+        this.cleanUp(i)
+      }
+    });
+    return this.trophies
+  }
+
+  cleanUp(dirtPatch) {
+    return dirtPatch
   }
 }

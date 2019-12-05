@@ -25,4 +25,15 @@ describe ('hoover', () => {
       expect(hoover.moveHoover('E')).toEqual([1,0])
     })
   })
+
+  describe('#checkDirt', () => {
+    it('returns empty array if no dirtPatch', () => {
+      const hoover = new Hoover([0,0], [5,5], [])
+      expect(hoover.checkDirt()).toEqual(0)
+    })
+    it('should return 1 if position and dirtPatch match', () => {
+      const hoover = new Hoover([0,0], [5,5],[[0,0]])
+      expect(hoover.checkDirt()).toEqual(1)
+    })
+  })
 })
