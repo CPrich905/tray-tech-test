@@ -35,5 +35,9 @@ describe ('hoover', () => {
       const hoover = new Hoover([0,0], [5,5],[[0,0]])
       expect(hoover.checkDirt()).toEqual(1)
     })
+    it('should return 0 if position and dirtPatch don\'t match', () => {
+      const hoover = new Hoover([0,0], [5,5], [[5,5]])
+      expect(hoover.checkDirt()).toEqual(0)
+    })
   })
 })
