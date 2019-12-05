@@ -15,21 +15,22 @@ module.exports = class Hoover {
     let hooverMoves;
     switch(direction) {
       case 'N':
-        moveHoover = this.moveNE(1)
+        hooverMoves = this.moveNE(1)
         break;
       case 'S':
-        moveHoover = this.moveSW(1)
+        hooverMoves = this.moveSW(1)
         break;
       case 'E':
-        moveHoover = this.moveNE(0)
+        hooverMoves = this.moveNE(0)
         break;
       case 'W':
-        moveHoover = this.moveSW(0)
+        hooverMoves = this.moveSW(0)
         break;
       default:
-        moveHoover = `Wrong way! Movement of ${direction} not recognised`;
+        moveHoover= `Wrong way! Movement of ${direction} not recognised`;
         break;
     }
+    // check for dirtPatch
     return hooverMoves
   }
   //check movement doesn't go beyond room dimensions. If not, +/- position on relative axis.
