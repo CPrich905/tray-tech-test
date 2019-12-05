@@ -1,5 +1,5 @@
 'use strict'
-// create model similar to space invaders movement.
+// create model & movement fns - space invaders.
 
 module.exports = class Hoover {
   constructor(position, roomSize, dirtPatch) {
@@ -9,28 +9,28 @@ module.exports = class Hoover {
     this.trophies = 0
   }
 
-  //movement parameters come as array of letters. Index 0 = E/W Index 1 = N/S
-  // moveOrders checks through movement orders & assigns index to increase (north/east) or decrease (south/west) the position index. Returns error message if input is not recognised.
-  moveOrders(direction) {
-    let moveReport;
+  // movement parameters come as array of letters. Index 0 = E/W Index 1 = N/S
+  // moveHoover() checks through movement orders & assigns index to increase (north/east) or decrease (south/west) the position index. Returns error message if input is not recognised.
+  moveHoover(direction) {
+    let hooverMoves;
     switch(direction) {
       case 'N':
-        moveReport= this.moveNE(1)
+        moveHoover = this.moveNE(1)
         break;
       case 'S':
-        moveReport = this.moveSW(1)
+        moveHoover = this.moveSW(1)
         break;
       case 'E':
-        moveReport = this.moveNE(0)
+        moveHoover = this.moveNE(0)
         break;
       case 'W':
-        moveReport = this.movesSW(0)
+        moveHoover = this.moveSW(0)
         break;
       default:
-        moveReport = `Wrong way! Movement of ${direction} not recognised`;
+        moveHoover = `Wrong way! Movement of ${direction} not recognised`;
         break;
     }
-    return moveReport
+    return hooverMoves
   }
   //check movement doesn't go beyond room dimensions. If not, +/- position on relative axis.
   //NE increases axis count, SW decreases axis count

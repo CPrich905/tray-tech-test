@@ -1,4 +1,6 @@
-// readline and fs
+// readline - parses each line of file
+// fs.createReadStream outputs read file
+// path allows import, specify file in module.exports.
 const readline = require('readline')
 const fs = require('fs')
 const path = require('path')
@@ -12,7 +14,7 @@ module.exports = async function (input) {
     position: [],
     roomSize: [],
     dirtPatch: [],
-    moveOrders: []
+    moves: []
   }
 
   const rline = readline.createInterface({
@@ -28,7 +30,7 @@ module.exports = async function (input) {
     } else if (index === 1) {
       readData.position = [parseInt(line[0]), parseInt(line[2])]
     } else if (line.includes('N', 'E', 'S', 'W')) {
-      readData.moveOrders = line.split('')
+      readData.moves = line.split('')
     } else {
       readData.dirtPatch.push([parseInt(line[0]), parseInt(line[2])])
     }
